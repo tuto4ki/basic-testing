@@ -17,37 +17,19 @@ describe('resolveValue', () => {
 describe('throwError', () => {
   test('should throw error with provided message', () => {
     const errorMessage = 'enter value';
-    try {
-      throwError(errorMessage);
-    } catch (error) {
-      if (error instanceof Error) {
-        expect(error.message).toBe(errorMessage);
-      }
-    }
+    expect(() => throwError(errorMessage)).toThrow(errorMessage);
   });
 
   test('should throw error with default message if message is not provided', () => {
     const errorMessage = 'Oops!';
-    try {
-      throwError();
-    } catch (error) {
-      if (error instanceof Error) {
-        expect(error.message).toBe(errorMessage);
-      }
-    }
+    expect(() => throwError()).toThrow(errorMessage);
   });
 });
 
 describe('throwCustomError', () => {
   test('should throw custom error', () => {
     const errorMessage = 'This is my awesome custom error!';
-    try {
-      throwCustomError();
-    } catch (error) {
-      if (error instanceof MyAwesomeError) {
-        expect(error.message).toBe(errorMessage);
-      }
-    }
+    expect(() => throwCustomError()).toThrow(errorMessage);
   });
 });
 

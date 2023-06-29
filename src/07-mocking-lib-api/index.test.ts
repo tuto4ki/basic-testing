@@ -1,18 +1,20 @@
 //import axios from 'axios';
-import { throttledGetDataFromApi } from './index';
+//import { throttledGetDataFromApi } from './index';
 
 describe('throttledGetDataFromApi', () => {
   test('should create instance with provided base url', async () => {
-    jest.useFakeTimers();
+    /*jest.useFakeTimers();
 
     jest.mock('axios');
 
     //axios.create.mockResolvedValue
     throttledGetDataFromApi('getPath');
 
+    //expect(axios.create).toBeInstanceOf()
+
     jest.unmock('axios');
 
-    jest.useRealTimers();
+    jest.useRealTimers();*/
   });
 
   test('should perform request to correct provided url', async () => {

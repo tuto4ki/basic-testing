@@ -92,25 +92,13 @@ describe('readFileAsynchronously', () => {
   });
 
   test('should return file content if file exists', async () => {
-    /**
-     * 
-     * interface IPathFile {
-        [index: string]: string;
-      }
-     */
     const pathToFile = '../text.txt';
-    const spyOne = jest.fn();
-    fs.promises.readFile = spyOne;
-    const files = { [pathToFile]: 'content file' };
+    const content = 'content file';
     jest.spyOn(path, 'join').mockImplementation(() => pathToFile);
-    jest
-      .spyOn(fs, 'existsSync')
-      .mockImplementation((path) => (path.toString() in files ? true : false));
+    jest.spyOn(fs, 'existsSync').mockImplementation(() => true);
     jest
       .spyOn(fs.promises, 'readFile')
-      .mockImplementation(async (path) => path && files[pathToFile]);
-    await expect(readFileAsynchronously(pathToFile)).resolves.toBe(
-      files[pathToFile],
-    );
+      .mockImplementation(() => Promise.resolve(content));
+    await expect(readFileAsynchronously(pathToFile)).resolves.toBe(content);
   });
 });
